@@ -1,0 +1,99 @@
+body,html{
+	background-image: url("/public/imgs/bg.jpg");
+	background-size: cover;
+	 background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.main-menu{
+	display: block;
+	background: #00dcc2;
+	margin: 0; padding: 5px 0;
+}
+.main-menu .init{
+	display: block;
+	margin: 5px auto;
+	width: 90%;
+	max-width: 1200px;
+}
+.main-menu .init .menu-left{
+	display: inline-block;
+	margin: 0; padding: 0;
+}
+.main-menu .init .menu-left .menu-item{
+	display: inline-block;
+	text-decoration: none;
+	color: #555;
+	font-size: 15px;
+	font-weight: bold;
+	margin: 5px 10px;
+	padding: 3px 0px;
+	border-bottom: 2px solid rgba(255,255,255,0);
+}
+.main-menu .init .menu-left .menu-item:hover{
+	color: white;
+	border-bottom: 2px solid white;
+}
+.main-menu .init .menu-left .menu-item.active{
+	color: white;
+	border-bottom: 2px solid white;
+}
+.main-menu .init .menu-left .menu-item.active:hover{
+	color: white;
+	border-bottom: 2px solid white;
+}
+.main-menu .init .menu-right{
+	display: inline-block;
+	margin: 0; padding: 0;
+	float: right;
+}
+.main-menu .init .menu-right .search-form, .main-menu .init .menu-right .user-area{
+	position: relative;
+	display: inline-block;
+}
+.main-menu .init .menu-right .search-form .search-input{
+	border: none; outline: none;
+	background: rgba(255,255,255,.5);
+	border: 2px solid rgba(255,255,255,0);
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-o-border-radius: 3px;
+	font-style: italic;
+	font-size: 14px;
+	font-weight: normal;
+	color: #555;
+	margin: 5px;
+	padding: 5px;
+	width: 300px;
+	line-height: 25px;
+}
+.main-menu .init .menu-right .search-form .search-input:focus{
+	border: 2px solid white;
+	color: black;
+}
+.main-menu .init .menu-right .search-form  .fa{
+	position: absolute;
+	top: 15px; right: 15px;
+	z-index: 1;
+	color: #555;
+}
+.footer{
+	display: block;
+	background: #00dcc2;
+	margin: 0; padding: 5px 0;
+	border-top: 5px solid white;
+}
+.footer .init{
+	display: block;
+	margin: 5px auto;
+	width: 90%;
+	max-width: 1200px;
+}
+.footer .init p{
+	display: block;
+	line-height: 25px;
+	margin: 3px auto;
+	text-align: center;
+	color: white;
+	font-size: 17px;
+}

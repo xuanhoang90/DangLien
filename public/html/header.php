@@ -6,10 +6,13 @@
 		<!-- Tell the browser to be responsive to screen width -->
 		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 		<!-- Bootstrap 3.3.4 -->
-		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="public/bootstrap/css/bootstrap.min.css"/>
 		<!-- Font Awesome Icons -->
 		<link rel="stylesheet" type="text/css" href="public/font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" type="text/css" href="public/css/ionicons.min.css">
+		<link rel="stylesheet" type="text/css" href="public/css/style.css">
+		<link rel="stylesheet" type="text/css" href="public/x-slider/magic.css">
+		<link rel="stylesheet" type="text/css" href="public/x-slider/x-slider.css">
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -18,3 +21,4 @@
 		<![endif]-->
 	</head>
 	<body>
+		<div class="main-contain">

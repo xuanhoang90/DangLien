@@ -20,8 +20,9 @@
 		//Test function
 		public function test(){
 			global $GLOB;
-			$GLOB->vars['page_title'] = "Test";
+			$GLOB->vars['page_title'] = "DangLienLib";
 			include "public/html/header.php";
+			include "public/html/home.php";
 			include "public/html/footer.php";
 			return true;
 		}

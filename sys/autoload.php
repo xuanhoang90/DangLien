@@ -11,8 +11,6 @@
 		echo "Access denies!";exit;
 	}
 	//test output
-	//$out = new HtmlOutput();
-	//$out->test();exit;
-	
-	
+	$out = new HtmlOutput();
+	$out->test();exit;
 ?>
