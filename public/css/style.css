@@ -97,3 +97,31 @@ body,html{
 	color: white;
 	font-size: 17px;
 }
+.present{
+	background: none;
+}
+.present .init{
+	display: block;
+	margin: 5px auto;
+	width: 90%;
+	max-width: 1200px;
+}
+.present .init .block-title{
+	display: block;
+	line-height: 50px;
+	margin: 20px auto;
+	text-align: center;
+	color: green;
+	font-weight: bold;
+	border-bottom: 1px dashed green;
+	padding: 10px auto;
+	width: 300px;
+}
+.present .init  .booklist{
+	margin: 10px auto;
+}
+.present .init  .booklist .book-item{
+	width: 30%;
+	display: inline-block;
+	margin: 1%;
+}

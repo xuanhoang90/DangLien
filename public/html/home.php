@@ -63,6 +63,54 @@
 </div>
 <!--End XSlider-->
 
+<div class="present">
+	<div class="init">
+		<h1 class="block-title">Book store</h1>
+		<div class="booklist">
+			<div class="book-item">
+				<img src="/public/imgs/test.jpg" />
+				<h3>Pro PHP and jQuery</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+			</div>
+			<div class="book-item">
+				<img src="/public/imgs/test.jpg" />
+				<h3>Pro PHP and jQuery</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+			</div>
+			<div class="book-item">
+				<img src="/public/imgs/test.jpg" />
+				<h3>Pro PHP and jQuery</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+			</div>
+			<div class="book-item">
+				<img src="/public/imgs/test.jpg" />
+				<h3>Pro PHP and jQuery</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+			</div>
+			<div class="book-item">
+				<img src="/public/imgs/test.jpg" />
+				<h3>Pro PHP and jQuery</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+			</div>
+			<div class="book-item">
+				<img src="/public/imgs/test.jpg" />
+				<h3>Pro PHP and jQuery</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+			</div>
+			<div class="book-item">
+				<img src="/public/imgs/test.jpg" />
+				<h3>Pro PHP and jQuery</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+			</div>
+			<div class="book-item">
+				<img src="/public/imgs/test.jpg" />
+				<h3>Pro PHP and jQuery</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+			</div>
+		</div>
+	</div>
+</div>
+
 <!--Footer-->
 <div class="footer">
 	<div class="init">
