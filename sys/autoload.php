@@ -25,6 +25,7 @@
 					$this->User();
 					break;
 				case 'book':
+					
 				case 'admin':
 					$this->Admin();
 					break;
@@ -41,7 +42,21 @@
 		}
 		public function Admin(){
 			if(isset($_SESSION['logined'])){
-			
+				if(isset($_REQUEST['view'])){
+					switch($_REQUEST['view']){
+						case 'book':
+							$this->Book();
+							break;
+						default:
+							$out = new HtmlOutput();
+							$out->AdminMainPage();exit;
+							break;
+					}
+				}else{
+					$out = new HtmlOutput();
+					$out->AdminMainPage();exit;
+					return;
+				}
 			}else{
 				$out = new HtmlOutput();
 				$out->Login();exit;
@@ -62,9 +77,42 @@
 				case 'login_process':
 					$USER->LoginProcess();
 					break;
+				case 'logout':
+					session_destroy();
+					header("Location: ".ROOT_DOMAIN);exit;
+					break;
 				default:
 					$this->HomePage();
 					break;
+			}
+		}
+		public function Book(){
+			if(isset($_REQUEST['action'])){
+				switch($_REQUEST['action']){
+					case 'list_book':
+						$out = new HtmlOutput();
+						$out->AdminListBook();exit;
+						break;
+					case 'add_book':
+						$out = new HtmlOutput();
+						$out->AdminAddBook();exit;
+						break;
+					case 'list_book_cat':
+						$out = new HtmlOutput();
+						$out->AdminListBookCategory();exit;
+						break;
+					case 'add_book_cat':
+						$out = new HtmlOutput();
+						$out->AdminAddBookCategory();exit;
+						break;
+					default:
+						$out = new HtmlOutput();
+						$out->AdminListBookCategory();exit;
+						break;
+				}
+			}else{
+				$out = new HtmlOutput();
+				$out->AdminListBook();exit;
 			}
 		}
 	}

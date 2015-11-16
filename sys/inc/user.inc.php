@@ -27,12 +27,19 @@
 				$out->Login();exit;
 			}
 			if($data = $DB->query("SELECT * FROM member WHERE account='{$userID}'")){
+				$data = $data[0];
 				if($userPwd == $data['password']){
 					$_SESSION['logined'] = true;
 					$_SESSION['acc_type'] = $data['acc_type'];
 					$_SESSION['member'] = $data['account'];
-					$out = new HtmlOutput();
-					$out->Home();exit;
+					if($data['acc_type'] == "1" || $data['acc_type'] == "2"){
+						$out = new HtmlOutput();
+						$out->AdminMainPage();exit;
+					}
+					if($data['acc_type'] == "3"){
+						$out = new HtmlOutput();
+						$out->Home();exit;
+					}
 				}else{
 					$GLOB->login_status = "Wrong password";
 					$out = new HtmlOutput();

@@ -1,5 +1,5 @@
 <!--Main menu-->
-<div class="main-menu">
+<div class="menu-chinh">
 	<div class="init">
 		<div class="logo">
 			<a href="<?php echo ROOT_DOMAIN;?>" class="logo-contain"><img src="/public/imgs/logo.png" /></a>
@@ -24,7 +24,7 @@
 					<a class="title">Hello, admin <i class="fa fa-chevron-down"></i></a>
 					<div class="user-menu">
 						<a class="item" href="<?php echo ROOT_DOMAIN;?>">Tai khoan</a>
-						<a class="item" href="<?php echo ROOT_DOMAIN;?>">Thoat</a>
+						<a class="item" href="<?php echo ROOT_DOMAIN;?>?site=user&action=logout">Thoat</a>
 					</div>
 				<?php else: ?>
 					<a class="title">Thanh vien <i class="fa fa-chevron-down"></i></a>
@@ -74,7 +74,7 @@
 </div>
 <!--End XSlider-->
 
-<div class="present">
+<div class="gioithieusach">
 	<div class="init">
 		<h1 class="block-title">Book store</h1>
 		<div class="booklist">

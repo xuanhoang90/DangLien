@@ -4,22 +4,22 @@ body,html{
 	 background-repeat: no-repeat;
     background-attachment: fixed;
 }
-.main-menu{
+.menu-chinh{
 	display: block;
 	background: #00dcc2;
 	margin: 0; padding: 5px 0;
 }
-.main-menu .init{
+.menu-chinh .init{
 	display: block;
 	margin: 5px auto;
 	width: 90%;
 	max-width: 1200px;
 }
-.main-menu .init .menu-left{
+.menu-chinh .init .menu-left{
 	display: inline-block;
 	margin: 0; padding: 0;
 }
-.main-menu .init .menu-left .menu-item{
+.menu-chinh .init .menu-left .menu-item{
 	display: inline-block;
 	text-decoration: none;
 	color: #555;
@@ -29,28 +29,28 @@ body,html{
 	padding: 3px 0px;
 	border-bottom: 2px solid rgba(255,255,255,0);
 }
-.main-menu .init .menu-left .menu-item:hover{
+.menu-chinh .init .menu-left .menu-item:hover{
 	color: white;
 	border-bottom: 2px solid white;
 }
-.main-menu .init .menu-left .menu-item.active{
+.menu-chinh .init .menu-left .menu-item.active{
 	color: white;
 	border-bottom: 2px solid white;
 }
-.main-menu .init .menu-left .menu-item.active:hover{
+.menu-chinh .init .menu-left .menu-item.active:hover{
 	color: white;
 	border-bottom: 2px solid white;
 }
-.main-menu .init .menu-right{
+.menu-chinh .init .menu-right{
 	display: inline-block;
 	margin: 0; padding: 0;
 	float: right;
 }
-.main-menu .init .menu-right .search-form, .main-menu .init .menu-right .user-area{
+.menu-chinh .init .menu-right .search-form, .menu-chinh .init .menu-right .user-area{
 	position: relative;
 	display: inline-block;
 }
-.main-menu .init .menu-right .user-area .title{
+.menu-chinh .init .menu-right .user-area .title{
 	display: inline-block;
 	text-decoration: none;
 	color: #555;
@@ -61,14 +61,14 @@ body,html{
 	border-bottom: 2px solid rgba(255,255,255,0);
 	cursor: pointer;
 }
-.main-menu .init .menu-right .user-area .title:hover{
+.menu-chinh .init .menu-right .user-area .title:hover{
 	color: white;
 	border-bottom: 2px solid white;
 }
-.main-menu .init .menu-right .user-area .user-menu{
+.menu-chinh .init .menu-right .user-area .user-menu{
 	display: none;
 }
-.main-menu .init .menu-right .user-area:hover .user-menu{
+.menu-chinh .init .menu-right .user-area:hover .user-menu{
 	position: absolute;
 	top: 100%;
 	left: 0; background: white;
@@ -85,7 +85,7 @@ body,html{
 	-o-box-shadow: 0px 0px 10px black;
 	width: 150px;
 }
-.main-menu .init .menu-right .user-area .user-menu .item{
+.menu-chinh .init .menu-right .user-area .user-menu .item{
 	display: block;
 	margin: 5px;
 	text-decoration: none;
@@ -99,11 +99,11 @@ body,html{
 	cursor: pointer;
 	padding: 5px 10px;
 }
-.main-menu .init .menu-right .user-area .user-menu .item:hover{
+.menu-chinh .init .menu-right .user-area .user-menu .item:hover{
 	background: #bbb;
 	color: black;
 }
-.main-menu .init .menu-right .search-form .search-input{
+.menu-chinh .init .menu-right .search-form .search-input{
 	border: none; outline: none;
 	background: rgba(255,255,255,.5);
 	border: 2px solid rgba(255,255,255,0);
@@ -120,11 +120,11 @@ body,html{
 	width: 300px;
 	line-height: 25px;
 }
-.main-menu .init .menu-right .search-form .search-input:focus{
+.menu-chinh .init .menu-right .search-form .search-input:focus{
 	border: 2px solid white;
 	color: black;
 }
-.main-menu .init .menu-right .search-form  .fa{
+.menu-chinh .init .menu-right .search-form  .fa{
 	position: absolute;
 	top: 15px; right: 15px;
 	z-index: 1;
@@ -135,6 +135,7 @@ body,html{
 	background: #00dcc2;
 	margin: 0; padding: 5px 0;
 	border-top: 5px solid white;
+	clear: both;
 }
 .footer .init{
 	display: block;
@@ -150,16 +151,16 @@ body,html{
 	color: white;
 	font-size: 17px;
 }
-.present{
+.gioithieusach{
 	background: none;
 }
-.present .init{
+.gioithieusach .init{
 	display: block;
 	margin: 5px auto;
 	width: 90%;
 	max-width: 1200px;
 }
-.present .init .block-title{
+.gioithieusach .init .block-title{
 	display: block;
 	line-height: 50px;
 	margin: 20px auto;
@@ -170,10 +171,10 @@ body,html{
 	padding: 10px auto;
 	width: 300px;
 }
-.present .init  .booklist{
+.gioithieusach .init  .booklist{
 	margin: 10px auto;
 }
-.present .init  .booklist .book-item{
+.gioithieusach .init  .booklist .book-item{
 	width: 30%;
 	display: inline-block;
 	margin: 1%;
@@ -183,14 +184,14 @@ body,html{
 	-moz-border-radius: 5px;
 	-o-border-radius: 5px;
 }
-.present .init  .booklist .book-item img{
+.gioithieusach .init  .booklist .book-item img{
 	width: 90%;
 	margin: 5% auto;
 	display: block;
 	padding: 5px;
 	border: 3px solid gray;
 }
-.present .init  .booklist .book-item h3{
+.gioithieusach .init  .booklist .book-item h3{
 	line-height: 30px;
 	display: block;
 	margin: 5px auto;
@@ -198,7 +199,7 @@ body,html{
 	font-weight: bold;
 	color: #333;
 }
-.present .init  .booklist .book-item p{
+.gioithieusach .init  .booklist .book-item p{
 	margin: 5px 10px;
 	display: block;
 	line-height: 25px;
@@ -209,22 +210,22 @@ body,html{
 }
 
 /*************************Admin login****************************/
-.loginpage{
+.trangdangnhap{
 	width: 100%;
 }
-.loginpage .init{
+.trangdangnhap .init{
 	width: 100%;
 	padding: 100px;
 }
-.loginpage .init .logo{
+.trangdangnhap .init .logo{
 	display: block;
 	margin: 0 auto;
 }
-.loginpage .init .logo img{
+.trangdangnhap .init .logo img{
 	display: block;
 	margin: 0 auto;
 }
-.loginpage .init .login-area{
+.trangdangnhap .init .login-area{
 	display: block;
 	margin: 30px auto;
 	width: 85%;
@@ -240,7 +241,7 @@ body,html{
 	-o-box-shadow: 0px 0px 10px black;
 	padding: 10px;
 }
-.loginpage .init .login-area h1{
+.trangdangnhap .init .login-area h1{
 	display: block;
 	margin: 5px auto;
 	line-height: 30px;
@@ -251,7 +252,7 @@ body,html{
 	border-bottom: 1px solid gray;
 	padding-bottom: 10px;
 }
-.loginpage .init .login-area .submit-login{
+.trangdangnhap .init .login-area .submit-login{
 	display: block;
 	margin: 10px auto;
 	margin-bottom: 20px;
@@ -267,21 +268,21 @@ body,html{
 	-moz-border-radius: 5px;
 	-o-border-radius: 5px;
 }
-.loginpage .init .login-area .submit-login:hover{
+.trangdangnhap .init .login-area .submit-login:hover{
 	background: darkgreen;
 }
-.loginpage .init .login-area .form-wrap{
+.trangdangnhap .init .login-area .form-wrap{
 	display: block;
 	margin: 10px auto;
 }
-.loginpage .init .login-area .form-wrap label{
+.trangdangnhap .init .login-area .form-wrap label{
 	display: inline-block;
 	margin: 0;
 	width: 30%;
 	text-align: right;
 	padding-right: 5px;
 }
-.loginpage .init .login-area .form-wrap input{
+.trangdangnhap .init .login-area .form-wrap input{
 	display: inline-block;
 	margin: 0;
 	width: 60%;
@@ -294,7 +295,7 @@ body,html{
 	padding: 5px 10px;
 	border: 1px solid #d4d4d4;
 }
-.loginpage .init .login-area .login_status{
+.trangdangnhap .init .login-area .login_status{
 	display: block;
 	line-height: 25px;
 	margin: 10px;
@@ -302,4 +303,226 @@ body,html{
 	font-style: italic;
 	font-size: 12px;
 	text-align: center;
+}
+
+/*************************Admin main page**************************/
+.trangchuquantri{
+	display: block;
+	margin: 0 auto;
+	clear: both;
+}
+.trangchuquantri .init{
+	display: block;
+	margin: 5px auto;
+	width: 90%;
+	max-width: 1200px;
+	clear: both;
+}
+.trangchuquantri .init .sidebar{
+	display: inline-block;
+	width: 200px;
+	margin: 5px;
+	padding: 3px;
+	background: white;
+	float: left;
+	clear: both;
+}
+.trangchuquantri .init .sidebar .title{
+	display: block;
+	line-height: 30px;
+	font-size: 18px;
+	font-weight: bold;
+	color: #333;
+	text-align: center;
+	border-bottom: 1px dashed gray;
+	padding: 5px 10px;
+	margin: 0 20px;
+}
+.trangchuquantri .init .sidebar .menu{
+	margin: 5px;
+	display: block;
+	/* background: rgba(0,0,0,.2); */
+	padding: 2px;
+}
+.trangchuquantri .init .sidebar .menu .label,
+.trangchuquantri .init .sidebar .menu .item{
+	display: block;
+	margin: 2px;
+	text-align: left;
+	padding: 3px;
+	line-height
+}
+.trangchuquantri .init .sidebar .menu .label{
+	color: darkred;
+	font-size: 14px;
+	font-weight: bold;
+	border-bottom: 1px solid darkred;
+	border-radius: 0px;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	-o-border-radius: 0px;
+	line-height: 30px;
+	padding: 5px 10px;
+	margin: 3px 5px;
+	margin-bottom: 10px;
+}
+.trangchuquantri .init .sidebar .menu .item{
+	background: white;
+	margin: 3px 10px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-o-border-radius: 3px;
+	line-height: 25px;
+	padding: 3px 10px;
+	color: #333;
+	font-size: 14px;
+	text-decoration: none;
+}
+.trangchuquantri .init .sidebar .menu .item:hover{
+	background: darkred;
+	color: white;
+}
+.trangchuquantri .init .sidebar .menu .item.active,
+.trangchuquantri .init .sidebar .menu .item.active:hover{
+	background: darkred;
+	color: white;
+}
+.trangchuquantri .init .quickstart{
+	display: inline-block;
+	margin: 5px;
+	padding: 10px;
+	background: white;
+	width: 950px;
+}
+.trangchuquantri .init .quickstart .title{
+	display: block;
+	line-height: 30px;
+	font-size: 18px;
+	font-weight: bold;
+	color: #333;
+	text-align: left;
+	border-bottom: 1px dashed gray;
+	padding: 5px 10px;
+	margin: 0 20px;
+}
+.trangchuquantri .init .quickstart .app-icon{
+	margin: 5px;
+	display: block;
+	/* background: rgba(0,0,0,.1); */
+	padding: 5px;
+}
+.trangchuquantri .init .quickstart .app-icon .app-item{
+	display: block;
+	margin: 5px;
+	padding: 5px 10px;
+	line-height: 30px;
+	text-decoration: none;
+	color: #333;
+	cursor: pointer;
+}
+.trangchuquantri .init .quickstart .app-icon .app-item:hover{
+	background: white;
+}
+/******************Trang danh sach Sach********************/
+.trangchuquantri .init .quickstart .app-icon .bangsach{
+	display: block;
+	margin: 5px;
+	padding: 3px;
+}
+.trangchuquantri .init .quickstart .app-icon .bangsach .mainrow{
+	display: block;
+	margin: 0;
+	padding: 0;
+	padding-left: 20px;
+	margin-bottom: 0 !important;
+	padding-bottom: 0 !important;
+}
+.trangchuquantri .init .quickstart .app-icon .bangsach .mainrow p{
+	display: inline-block;
+	line-height: 30px;
+	height: 70px;
+	padding: 0;
+	color: white;
+	border-top: 2px solid white;
+	border-bottom: 2px solid white;
+	background: darkred;
+	margin: 0;
+	margin-left: -4px;
+	border-left: 1px solid white;
+	font-size: 12px;
+	text-align: center;
+	overflow: hidden;
+	font-weight: bold;
+}
+.trangchuquantri .init .quickstart .app-icon .bangsach .table_danhmucsach p{
+	height: 35px;
+}
+.trangchuquantri .init .quickstart .app-icon .bangsach .row{
+	display: block;
+	margin: 0;
+	padding: 0;
+	padding-left: 20px;
+	margin-top: -7px !important;
+	margin-bottom: 0 !important;
+	padding-bottom: 0 !important;
+}
+.trangchuquantri .init .quickstart .app-icon .bangsach .row p,
+.trangchuquantri .init .quickstart .app-icon .bangsach .row .table_thaotac{
+	display: inline-block;
+	line-height: 30px;
+	height: 30px;
+	padding: 0;
+	color: #333;
+	border-top: 2px solid #d4d4d4;
+	border-bottom: 2px solid #d4d4d4;
+	background: white;
+	margin: 0;
+	margin-left: -4px;
+	border-left: 1px solid #d4d4d4;
+	font-size: 12px;
+	text-align: center;
+	overflow: hidden;
+}
+.trangchuquantri .init .quickstart .app-icon .bangsach .row .table_thaotac .thaotac{
+	text-decoration: none;
+	color: green;
+	font-size: 13px;
+}
+.trangchuquantri .init .quickstart .app-icon .bangsach .row .table_thaotac .thaotac:hover{
+	color: darkred;
+}
+.trangchuquantri .init .quickstart .app-icon .bangsach .row .table_tensach{
+	font-weight: bold;
+	color: green;
+}
+
+/********************Phan trang**********************/
+.phantrang{
+	display: block;
+	margin: 5px;
+	padding: 5px 20px;
+}
+.phantrang .trang{
+	display: inline-block;
+	line-height: 25px;
+	margin: 0;
+	padding: 3px 10px;
+	background: #eee;
+	border: 1px solid #d4d4d4;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-o-border-radius: 3px;
+	font-size: 13px;
+	font-weight: bold;
+	text-decoration: none;
+	cursor: pointer;
+}
+.phantrang .trang:hover{
+	background: #d4d4d4;
+}
+.phantrang .trang.current{
+	color: white;
+	background: green;
 }

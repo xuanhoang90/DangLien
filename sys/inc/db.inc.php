@@ -21,10 +21,13 @@
 		}
 		public function query($query){
 			global $GLOB;
+			$res = array();
 			$request = mysql_query($query);
-			$result = mysql_fetch_array($request);
-			if(sizeof($result)){
-				return $result;
+			while($result = mysql_fetch_array($request)){
+				array_push($res, $result);
+			}
+			if(sizeof($res)){
+				return $res;
 			}else{
 				return false;
 			}

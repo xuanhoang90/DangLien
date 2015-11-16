@@ -1,4 +1,4 @@
-<div class="loginpage">
+<div class="trangdangnhap">
 	<div class="init">
 		<div class="logo">
 			<a href="<?php echo ROOT_DOMAIN;?>" class="logo-contain"><img src="/public/imgs/logo.png" /></a>
