@@ -17,12 +17,21 @@
 		public function __construct(){
 			return true;
 		}
-		//Test function
-		public function test(){
+		//HomePage
+		public function Home(){
 			global $GLOB;
 			$GLOB->vars['page_title'] = "DangLienLib";
 			include "public/html/header.php";
 			include "public/html/home.php";
+			include "public/html/footer.php";
+			return true;
+		}
+		//Admin login
+		public function Login(){
+			global $GLOB;
+			$GLOB->vars['page_title'] = "Admin Login";
+			include "public/html/header.php";
+			include "public/html/admin_login.php";
 			include "public/html/footer.php";
 			return true;
 		}

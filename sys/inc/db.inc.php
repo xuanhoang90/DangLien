@@ -12,10 +12,22 @@
 	/******************************
 	 *	Database
 	 ******************************/
-	
+	$DB = new DBClass();
 	class DBClass{
 		public function __construct(){
-			return true;
+			mysql_connect(DB_HOST, DB_USER, DB_PASS);
+			mysql_select_db(DB_NAME);
+			return;
+		}
+		public function query($query){
+			global $GLOB;
+			$request = mysql_query($query);
+			$result = mysql_fetch_array($request);
+			if(sizeof($result)){
+				return $result;
+			}else{
+				return false;
+			}
 		}
 	}
 ?>

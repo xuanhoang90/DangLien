@@ -2,17 +2,17 @@
 <div class="main-menu">
 	<div class="init">
 		<div class="logo">
-			<a href="#" class="logo-contain"><img src="/public/imgs/logo.png" /></a>
+			<a href="<?php echo ROOT_DOMAIN;?>" class="logo-contain"><img src="/public/imgs/logo.png" /></a>
 		</div>
 		<div class="menu-left">
-			<a class="menu-item active" href="#"><i class="fa fa-home"></i> Home</a>
-			<a class="menu-item" href="#">Book Category</a>
-			<a class="menu-item" href="#">About</a>
-			<a class="menu-item" href="#">Contact</a>
+			<a class="menu-item active" href="<?php echo ROOT_DOMAIN;?>"><i class="fa fa-home"></i> Home</a>
+			<a class="menu-item" href="<?php echo ROOT_DOMAIN;?>">Book Category</a>
+			<a class="menu-item" href="<?php echo ROOT_DOMAIN;?>">About</a>
+			<a class="menu-item" href="<?php echo ROOT_DOMAIN;?>">Contact</a>
 		</div>
 		<div class="menu-right">
 			<div class="search-form">
-				<form action="#" method="GET">
+				<form action="<?php echo ROOT_DOMAIN;?>" method="GET">
 					<input class="search-input" type="text" name="s_key" value="" placeholder="Type some thing to search..." /><i class="fa fa-search"></i>
 					<input type="submit" name="submit" style="display: none;" value="OK" />
 				</form>
@@ -21,9 +21,20 @@
 				<?php 
 					if(isset($_SESSION['logined'])):
 				?>
-					<a href="#">Hello, Admin</a>
+					<a class="title">Hello, admin <i class="fa fa-chevron-down"></i></a>
+					<div class="user-menu">
+						<a class="item" href="<?php echo ROOT_DOMAIN;?>">Tai khoan</a>
+						<a class="item" href="<?php echo ROOT_DOMAIN;?>">Thoat</a>
+					</div>
 				<?php else: ?>
-					<a href="#">Sign in / Sign up</a>
+					<a class="title">Thanh vien <i class="fa fa-chevron-down"></i></a>
+					<div class="user-menu">
+						<a class="item" href="<?php echo ROOT_DOMAIN;?>?site=user&action=login&next=home">Dang nhap</a>
+						<a class="item" href="<?php echo ROOT_DOMAIN;?>?site=user&action=register">Dang ky</a>
+						<hr/>
+						<a class="item" href="<?php echo ROOT_DOMAIN;?>/?site=user&action=login&next=dashboard">Admin login</a>
+						<a class="item" href="<?php echo ROOT_DOMAIN;?>/?site=user&action=login&next=dashboard">Smod login</a>
+					</div>
 				<?php endif; ?>
 			</div>
 		</div>

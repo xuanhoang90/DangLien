@@ -16,6 +16,7 @@
 	define("DB_USER", "root");
 	define("DB_PASS", "");
 	define("DB_NAME", "dl_lib");
+	define("ROOT_DOMAIN","http://".$_SERVER[HTTP_HOST]);
 	
 	//Include system file:
 	$sysFile = array(

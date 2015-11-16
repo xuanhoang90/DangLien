@@ -50,6 +50,59 @@ body,html{
 	position: relative;
 	display: inline-block;
 }
+.main-menu .init .menu-right .user-area .title{
+	display: inline-block;
+	text-decoration: none;
+	color: #555;
+	font-size: 15px;
+	font-weight: bold;
+	margin: 5px 10px;
+	padding: 3px 0px;
+	border-bottom: 2px solid rgba(255,255,255,0);
+	cursor: pointer;
+}
+.main-menu .init .menu-right .user-area .title:hover{
+	color: white;
+	border-bottom: 2px solid white;
+}
+.main-menu .init .menu-right .user-area .user-menu{
+	display: none;
+}
+.main-menu .init .menu-right .user-area:hover .user-menu{
+	position: absolute;
+	top: 100%;
+	left: 0; background: white;
+	display: block;
+	z-index: 999999;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-o-border-radius: 4px;
+	padding: 10px;
+	box-shadow: 0px 0px 10px black;
+	-webkit-box-shadow: 0px 0px 10px black;
+	-moz-box-shadow: 0px 0px 10px black;
+	-o-box-shadow: 0px 0px 10px black;
+	width: 150px;
+}
+.main-menu .init .menu-right .user-area .user-menu .item{
+	display: block;
+	margin: 5px;
+	text-decoration: none;
+	font-weight: normal;
+	color: #333;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-o-border-radius: 4px;
+	line-height: 25px;
+	cursor: pointer;
+	padding: 5px 10px;
+}
+.main-menu .init .menu-right .user-area .user-menu .item:hover{
+	background: #bbb;
+	color: black;
+}
 .main-menu .init .menu-right .search-form .search-input{
 	border: none; outline: none;
 	background: rgba(255,255,255,.5);
@@ -153,4 +206,100 @@ body,html{
 	text-align: justify;
 	font-size: 13px;
 	color: #333;
+}
+
+/*************************Admin login****************************/
+.loginpage{
+	width: 100%;
+}
+.loginpage .init{
+	width: 100%;
+	padding: 100px;
+}
+.loginpage .init .logo{
+	display: block;
+	margin: 0 auto;
+}
+.loginpage .init .logo img{
+	display: block;
+	margin: 0 auto;
+}
+.loginpage .init .login-area{
+	display: block;
+	margin: 30px auto;
+	width: 85%;
+	max-width: 400px;
+	background: rgba(255,255,255,.7);
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	box-shadow: 0px 0px 10px black;
+	-webkit-box-shadow: 0px 0px 10px black;
+	-moz-box-shadow: 0px 0px 10px black;
+	-o-box-shadow: 0px 0px 10px black;
+	padding: 10px;
+}
+.loginpage .init .login-area h1{
+	display: block;
+	margin: 5px auto;
+	line-height: 30px;
+	font-size: 20px;
+	font-weight: bold;
+	color: green;
+	text-align: center;
+	border-bottom: 1px solid gray;
+	padding-bottom: 10px;
+}
+.loginpage .init .login-area .submit-login{
+	display: block;
+	margin: 10px auto;
+	margin-bottom: 20px;
+	border: none;
+	outline: none;
+	background: green;
+	color: white;
+	font-size: 15px;
+	font-weight: bold;
+	padding: 5px 20px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+}
+.loginpage .init .login-area .submit-login:hover{
+	background: darkgreen;
+}
+.loginpage .init .login-area .form-wrap{
+	display: block;
+	margin: 10px auto;
+}
+.loginpage .init .login-area .form-wrap label{
+	display: inline-block;
+	margin: 0;
+	width: 30%;
+	text-align: right;
+	padding-right: 5px;
+}
+.loginpage .init .login-area .form-wrap input{
+	display: inline-block;
+	margin: 0;
+	width: 60%;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	padding: 5px 10px;
+	border: 1px solid #d4d4d4;
+}
+.loginpage .init .login-area .login_status{
+	display: block;
+	line-height: 25px;
+	margin: 10px;
+	color: red;
+	font-style: italic;
+	font-size: 12px;
+	text-align: center;
 }
