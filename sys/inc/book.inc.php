@@ -109,5 +109,14 @@
 			}
 			return $res;
 		}
+		//ham nay load database danh sach cac chu de sach
+		public function Theloaisach(){
+			global $DB;
+			if($data = $DB->query("SELECT * FROM book_category")){
+				return $data;
+			}else{
+				return false;
+			}
+		}
 	}
 ?>

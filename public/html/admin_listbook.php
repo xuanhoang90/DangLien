@@ -86,7 +86,7 @@
 						?>
 							<div class="row">
 								<p class="table_stt" style="width: 5%;"><?php echo $stt; ?></p>
-								<p class="table_tensach" style="width: 20%;"><?php echo $tensach; ?></p>
+								<p class="table_tensach" style="width: 20%;"><img style="width: 30px;height: 30px; padding: 2px; border: 1px solid #d4d4d4;" src="<?php echo ROOT_DOMAIN.$hinh;?>" /> <?php echo $tensach; ?></p>
 								<p class="table_tacgia" style="width: 15%;"><?php echo $tacgia; ?></p>
 								<p class="table_nhaxb" style="width: 15%;"><?php echo $nhaxb; ?></p>
 								<p class="table_namxb" style="width: 5%;"><?php echo $namxb; ?></p>

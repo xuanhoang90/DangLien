@@ -128,5 +128,25 @@ HERE;
 HERE;
 			return $html;
 		}
+		
+		//ham nay se load danh sach cac the loai sach dang co ra de chon khi nhap sach moi
+		public function Theloaisach(){
+			global $DB, $BOOK;
+			$output = "";
+			/**
+			 *	if($data = $BOOK->Theloaisach())//neu co data, tuc la database co cac the loai sach thi echo ra, neu ko co data thi -> empty
+			 *	$data = $BOOK->Theloaisach(): ta se goi class Book, truy van den ham theloaisach de lay database, neu no tra ve data thi minh echo ra cac option
+			 *	Neu khong the echo empty
+			 *	ham` nay duoc goi. o ben file html nhu sau
+			 */
+			if($data = $BOOK->Theloaisach()){
+				foreach($data as $theloai){
+					$output .= "<option value='{$theloai['id']}'>{$theloai['name']}</option>";
+				}
+			}else{
+				$output = "<option value='default'>Empty</option>";
+			}
+			return $output;
+		}
 	}
 ?>
