@@ -32,5 +32,13 @@
 				return false;
 			}
 		}
+		public function query_insert($query){
+			global $GLOB;
+			if(mysql_query($query)){
+				return true;
+			}else{
+				return false;
+			}
+		}
 	}
 ?>

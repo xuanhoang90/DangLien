@@ -94,8 +94,8 @@
 								<p class="table_chude" style="width: 15%;"><?php echo $chude; ?></p>
 								<p class="table_soluong" style="width: 5%;"><?php echo $soluong; ?></p>
 								<div class="table_thaotac" style="width: 15%;">
-									<a class="thaotac sua" href="#"><i class="fa fa-edit"></i> Sua</a>
-									<a class="thaotac xoa" href="#"><i class="fa fa-trash"></i> Xoa</a>
+									<a class="thaotac sua" href="<?php echo ROOT_DOMAIN."/?site=admin&view=book&action=edit_book&book_id=".$oneBook['id'];?>"><i class="fa fa-edit"></i> Sua</a>
+									<a class="thaotac xoa" href="<?php echo ROOT_DOMAIN."/?site=admin&view=book&action=delete_book&book_id=".$oneBook['id'];?>"><i class="fa fa-trash"></i> Xoa</a>
 								</div>
 							</div>
 						<?php 
@@ -111,6 +111,32 @@
 					$html = new HtmlOutput();
 					echo $html->PhanTrang($GLOB->obj_page_num, $GLOB->obj_page_total, ROOT_DOMAIN."/?site=admin&view=book&action=list_book&book_cat=".$_REQUEST['book_cat']."&page_number=");
 				?>
+				
+				<script>
+					$(function(){
+						//xoa sach
+						$(".bangsach").find(".row").find('.table_thaotac').find(".xoa").click(function(e){
+							e.preventDefault();
+							if(confirm("Ban co chac muon xoa sach khong?")){
+								$(".bangsach").find(".row").removeClass("delete_this");
+								$(this).parent().parent().addClass("delete_this");
+								var _ActionLink = $(this).attr("href");
+								$.ajax({
+									method: "POST",
+									url: _ActionLink,
+									data: {abc:"1"},
+								}).done(function(data){
+									data = JSON.parse(data);
+									if(data.status == 'success'){
+										$(".bangsach").find(".delete_this").fadeOut(300).remove();
+									}else{
+										alert("Da xay ra loi, vui long thu lai");
+									}
+								});
+							}
+						})
+					})
+				</script>
 			</div>
 		</div>
 	</div>

@@ -21,7 +21,7 @@
 				<?php 
 					if(isset($_SESSION['logined'])):
 				?>
-					<a class="title">Hello, <?php echo $_SESSION['member']; ?> <i class="fa fa-chevron-down"></i></a>
+					<a class="title">Hello, admin <i class="fa fa-chevron-down"></i></a>
 					<div class="user-menu">
 						<a class="item" href="<?php echo ROOT_DOMAIN;?>">Tai khoan</a>
 						<a class="item" href="<?php echo ROOT_DOMAIN;?>?site=user&action=logout">Thoat</a>
@@ -41,66 +41,26 @@
 	</div>
 </div>
 <!--End Main menu-->
-<!--X Slider-->
-<div class="x-slider">
-	<div class="slider">
-		<div class="x-item">
-			<img src="/public/imgs/slider/1.png" />
-		</div>
-		<div class="x-item">
-			<img src="/public/imgs/slider/2.jpg" />
-		</div>
-		<div class="x-item">
-			<img src="/public/imgs/slider/3.jpg" />
-		</div>
-		<div class="x-item">
-			<img src="/public/imgs/slider/4.png" />
-		</div>
-		<div class="x-item">
-			<img src="/public/imgs/slider/5.jpg" />
-		</div>
-	</div>
-	<div class="nav-btn">
-		<span class="xbtn active"></span>
-		<span class="xbtn"></span>
-		<span class="xbtn"></span>
-		<span class="xbtn"></span>
-		<span class="xbtn"></span>
-	</div>
-	<div class="x-btn">
-		<span class="act next"><i class="fa fa-angle-right"></i></span>
-		<span class="act prev"><i class="fa fa-angle-left"></i></span>
-	</div>
-</div>
-<!--End XSlider-->
 
-<div class="gioithieusach">
+<!--Admin Main page-->
+<div class="trangchuquantri">
 	<div class="init">
-		<h1 class="block-title">Book store</h1>
-		<div class="booklist">
-			<?php
-				//load danh sach sach theo kieu sap xep moi nhat
-				$book12 = new Book();
-				$bookData12 = $book12->LoadListBook12();
-				foreach($bookData12 as $oneBook):
-			?>
-				<div class="book-item">
-					<div class="contain-image">
-						<img src="<?php echo ROOT_DOMAIN.$oneBook['image']; ?>" />
-						<a class="thuesach"><i class="fa fa-eyedropper"></i> Thue sach</a>
+		<?php include "public/html/admin_sidebar.php"; ?>
+		<div class="quickstart">
+			<!--Thong ke va cac bieu tuong truy cap nhanh vao chuc nang-->
+			<p class="title">Thêm danh muc sách</p>
+			<div class="app-icon">
+				<div class="form-add-book"><form method="POST" action="<?php echo ROOT_DOMAIN."/?site=admin&view=book&action=addbookcategory_process";?>">
+					<div class="form-wrap">
+						<p class="label">Ten danh muc sach</p><input class="input-text bookcate_name" name="bookcate_name" type="text" value="" placeholder="Book category name" />
 					</div>
-					<a class="booklink" href="#"><?php echo $oneBook['name']; ?></a>
-					<p><?php echo $oneBook['description']; ?></p>
-				</div>
-			<?php endforeach; ?>
-			
-			<?php
-				$html = new HtmlOutput();
-				echo $html->PhanTrang($GLOB->obj_page_num, $GLOB->obj_page_total, ROOT_DOMAIN."/?page_number=");
-			?>
+					<input class="form-submit" type="submit" name="submit" value="Go" />
+				</form></div> 
+			</div>
 		</div>
 	</div>
 </div>
+<!--/Admin Main page-->
 
 <!--Footer-->
 <div class="footer">

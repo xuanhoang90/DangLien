@@ -184,21 +184,33 @@ body,html{
 	-moz-border-radius: 5px;
 	-o-border-radius: 5px;
 }
-.gioithieusach .init  .booklist .book-item img{
+.gioithieusach .init  .booklist .book-item .contain-image{
 	width: 90%;
 	margin: 5% auto;
 	display: block;
-	padding: 5px;
+	padding: 0;
 	border: 3px solid gray;
+	position: relative;
+	height: 200px;
+	max-height: 200px;
+	overflow: hidden;
 }
-.gioithieusach .init  .booklist .book-item h3{
+.gioithieusach .init  .booklist .book-item .contain-image img{
+	height: 100%;
+	display: block;
+	margin: 0 auto;
+}
+.gioithieusach .init  .booklist .book-item .booklink{
 	line-height: 30px;
 	display: block;
 	margin: 5px auto;
 	text-align: center;
 	font-weight: bold;
 	color: #333;
+	text-decoration: none;
+	font-size: 16px;
 }
+.gioithieusach .init  .booklist .book-item .booklink:hover{color: green;}
 .gioithieusach .init  .booklist .book-item p{
 	margin: 5px 10px;
 	display: block;
@@ -208,7 +220,25 @@ body,html{
 	font-size: 13px;
 	color: #333;
 }
-
+.gioithieusach .init  .booklist .book-item .contain-image .thuesach{
+	position: absolute;
+	top: 40%;
+	background: rgba(255,255,255,.8);
+	z-index: 10;
+	color: red;
+	margin-left: 25%;
+	width: 50%;
+	padding: 10px 0px;
+	line-height: 30px;
+	text-align: center;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 15px;
+	cursor: pointer;
+	display: none;
+}
+.gioithieusach .init  .booklist .book-item:hover .contain-image .thuesach{display: block;}
+.gioithieusach .init  .booklist .book-item .contain-image .thuesach:hover{color: darkred; background: white;}
 /*************************Admin login****************************/
 .trangdangnhap{
 	width: 100%;
@@ -304,7 +334,20 @@ body,html{
 	font-size: 12px;
 	text-align: center;
 }
-
+.trangdangnhap .init .login-area .user-link{
+	display: block;
+	margin: 5px auto;
+	width: 60%;
+	line-height: 25px;
+	padding: 3px;
+	text-align: left;
+	text-decoration: none;
+	font-size: 13px;
+	font-style: italic;
+	color: #777;
+	margin-left: 30%;
+}
+.trangdangnhap .init .login-area .user-link:hover{color: black;}
 /*************************Admin main page**************************/
 .trangchuquantri{
 	display: block;
@@ -499,7 +542,10 @@ body,html{
 	font-weight: bold;
 	color: green;
 }
-
+.trangchuquantri .init .quickstart .app-icon .bangsach .row .table_tensach{
+	text-align: left;
+	padding-left: 5px;
+}
 /********************Phan trang**********************/
 .phantrang{
 	display: block;
@@ -598,8 +644,40 @@ body,html{
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	-o-border-radius: 5px;
+	/**
+		Tao bo tron` goc cho 1 phan tu, tuong thich cac trinh duyet
+		a ko nho ro lam, nhung moi trinh duyet no hoat dong 1 loai
+		-o- : opera
+		-webkit: hinh nhu firefox hay chrome j a
+		-moz cung la firefox, safari
+		ok.hiểu dc rồi a :)
+		tai vi 1 so trinh duyet nhung thuoc tinh nay ko hoat dong, nen no co them 1 so dogn` nhu vay
+	**/
 	border: 3px solid green;
 }
 .form-add-book .form-submit:hover{
 	border: 3px solid #333;
+}
+
+/*************************Trang thong bao them sach**************************/
+.addbook_status{
+	display: block;
+	margin: 5px;
+	background: green;
+	padding: 100px 50px;
+}
+.addbook_status .action{
+	display: inline-block;
+	background: white;
+	text-decoration: none;
+	color: green;
+	padding: 10px 50px;
+	margin: 10px 20px;
+	text-align: center;
+	font-size: 17px;
+	font-weight: bold;
+}
+.addbook_status .action:hover{
+	color: brown;
+	cursor: pointer; /*Tao hieu ung khi re chuot vao 1 phan tu no hien hinh ban tay*/
 }

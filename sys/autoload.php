@@ -74,6 +74,13 @@
 					$out = new HtmlOutput();
 					$out->Register();exit;
 					break;
+				case 'register_process':
+					$USER->RegisterProcess();
+					break;
+				case 'forget_pass':
+					$out = new HtmlOutput();
+					$out->FogetPassword();exit;
+					break;
 				case 'login_process':
 					$USER->LoginProcess();
 					break;
@@ -87,6 +94,7 @@
 			}
 		}
 		public function Book(){
+			global $BOOK;
 			if(isset($_REQUEST['action'])){
 				switch($_REQUEST['action']){
 					case 'list_book':
@@ -97,6 +105,37 @@
 						$out = new HtmlOutput();
 						$out->AdminAddBook();exit;
 						break;
+					case 'delete_book':
+						$res = array();
+						if($BOOK->DeleteBookProcess()){
+							$res = array("status"=>'success');
+						}else{
+							$res = array("status"=>'false');
+						}
+						echo json_encode($res);exit;
+						break;
+					case 'edit_book':
+						$out = new HtmlOutput();
+						$out->AdminEditBook();exit;
+						break;
+					case 'addbook_process':
+						if($BOOK->AddBookProcess()){
+							$out = new HtmlOutput();
+							$out->AdminAddBookSuccess();exit;
+						}else{
+							$out = new HtmlOutput();
+							$out->AdminAddBookFalse();exit;
+						}
+						break;
+					case 'editbook_process':
+						if($BOOK->EditBookProcess()){
+							$out = new HtmlOutput();
+							$out->AdminEditBookSuccess();exit;
+						}else{
+							$out = new HtmlOutput();
+							$out->AdminEditBookFalse();exit;
+						}
+						break;
 					case 'list_book_cat':
 						$out = new HtmlOutput();
 						$out->AdminListBookCategory();exit;
@@ -104,6 +143,15 @@
 					case 'add_book_cat':
 						$out = new HtmlOutput();
 						$out->AdminAddBookCategory();exit;
+						break;
+					case 'addbookcategory_process':
+						if($BOOK->AddBookCategoryProcess()){
+							$out = new HtmlOutput();
+							$out->AdminAddBookCategorySuccess();exit;
+						}else{
+							$out = new HtmlOutput();
+							$out->AdminAddBookCategoryFalse();exit;
+						}
 						break;
 					default:
 						$out = new HtmlOutput();

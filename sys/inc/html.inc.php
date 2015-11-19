@@ -35,6 +35,15 @@
 			include "public/html/footer.php";
 			return true;
 		}
+		//Admin login
+		public function Register(){
+			global $GLOB;
+			$GLOB->vars['page_title'] = "Sign Up";
+			include "public/html/header.php";
+			include "public/html/user_register.php";
+			include "public/html/footer.php";
+			return true;
+		}
 		//AdminMainPage
 		public function AdminMainPage(){
 			global $GLOB;
@@ -61,6 +70,23 @@
 			$GLOB->vars['page_title'] = "Them sach";
 			include "public/html/header.php";
 			include "public/html/admin_addbook.php";
+			include "public/html/footer.php";
+			return true;
+		}
+		//trang sua sach
+		public function AdminEditBook(){
+			global $GLOB, $BOOK;
+			$GLOB->vars['page_title'] = "Them sach";
+			//edit thi clone cai add, nhung phai load data cua sach can sua
+			$idBook = $_REQUEST['book_id'];
+			include "public/html/header.php";
+			if($data = $BOOK->LoadBookData($idBook)){
+				//neu sach co trong thu vien thi moi cho edit, tranh truong hop nhap id sai
+				//echo "<pre>";print_r($data);exit;
+				include "public/html/admin_editbook.php";
+			}else{
+				include "public/html/admin_editbook_nodata.php";
+			}
 			include "public/html/footer.php";
 			return true;
 		}
@@ -130,7 +156,7 @@ HERE;
 		}
 		
 		//ham nay se load danh sach cac the loai sach dang co ra de chon khi nhap sach moi
-		public function Theloaisach(){
+		public function Theloaisach($selected = false){
 			global $DB, $BOOK;
 			$output = "";
 			/**
@@ -141,12 +167,113 @@ HERE;
 			 */
 			if($data = $BOOK->Theloaisach()){
 				foreach($data as $theloai){
-					$output .= "<option value='{$theloai['id']}'>{$theloai['name']}</option>";
+					$add = "";
+					if($selected){
+						if($theloai['id'] == $selected){
+							$add = "selected='true'";
+						}
+					}
+					$output .= "<option {$add} value='{$theloai['id']}'>{$theloai['name']}</option>";
 				}
 			}else{
 				$output = "<option value='default'>Empty</option>";
 			}
 			return $output;
+		}
+		//trang thong bao them sach thanh cong
+		public function AdminAddBookSuccess(){
+			global $GLOB;
+			$GLOB->vars['page_title'] = "DangLienLib";
+			$addbook_status = "Them sach thanh cong";
+			include "public/html/header.php";
+			include "public/html/admin_status_addbook.php";
+			include "public/html/footer.php";
+			return true;
+		}
+		//trang thong bao them sach that bai: da xay ra loi
+		public function AdminAddBookFalse(){
+			global $GLOB;
+			$GLOB->vars['page_title'] = "DangLienLib";
+			$addbook_status = "Them sach da xay ra loi, vui long thu lai";
+			include "public/html/header.php";
+			include "public/html/admin_status_addbook.php";
+			include "public/html/footer.php";
+			return true;
+		}
+		
+		//trang thong bao sua sach thanh cong
+		public function AdminEditBookSuccess(){
+			global $GLOB;
+			$GLOB->vars['page_title'] = "DangLienLib";
+			$addbook_status = "Sua sach thanh cong";
+			include "public/html/header.php";
+			include "public/html/admin_status_addbook.php";
+			include "public/html/footer.php";
+			return true;
+		}
+		//trang thong bao sua sach that bai: da xay ra loi
+		public function AdminEditBookFalse(){
+			global $GLOB;
+			$GLOB->vars['page_title'] = "DangLienLib";
+			$addbook_status = "Sua sach da xay ra loi, vui long thu lai";
+			include "public/html/header.php";
+			include "public/html/admin_status_addbook.php";
+			include "public/html/footer.php";
+			return true;
+		}
+		
+		//trang thong bao them danh muc sach thanh cong
+		public function AdminAddBookCategorySuccess(){
+			global $GLOB;
+			$GLOB->vars['page_title'] = "DangLienLib";
+			$addbook_status = "Them danh muc sach thanh cong";
+			include "public/html/header.php";
+			include "public/html/admin_status_addbookcategory.php";
+			include "public/html/footer.php";
+			return true;
+		}
+		//trang thong bao them danh muc sach that bai: da xay ra loi
+		public function AdminAddBookCategoryFalse(){
+			global $GLOB;
+			$GLOB->vars['page_title'] = "DangLienLib";
+			$addbook_status = "Them danh muc sach da xay ra loi, vui long thu lai";
+			include "public/html/header.php";
+			include "public/html/admin_status_addbookcategory.php";
+			include "public/html/footer.php";
+			return true;
+		}
+		
+		
+		//trang thong bao dang ki tai khoan thanh cong
+		public function UserRegisterSucess(){
+			global $GLOB;
+			$GLOB->vars['page_title'] = "DangLienLib";
+			$addbook_status = "Dang ki thanh cong";
+			include "public/html/header.php";
+			include "public/html/user_register_status_ok.php";
+			include "public/html/footer.php";
+			return true;
+		}
+		//trang thong bao Tai khoan da ton tai
+		public function UserRegisterFalseID(){
+			global $GLOB;
+			$GLOB->vars['page_title'] = "DangLienLib";
+			$addbook_status = "Tai khoan da ton tai";
+			include "public/html/header.php";
+			include "public/html/user_register_status_false.php";
+			include "public/html/footer.php";
+			return true;
+		}
+		
+		//trang quen mat khau
+		public function FogetPassword(){
+			global $GLOB;
+			$GLOB->vars['page_title'] = "DangLienLib";
+			$addbook_status = "";
+			include "public/html/header.php";
+			include "public/html/user_forget_pass.php";
+			include "public/html/footer.php";
+			return true;
 		}
 	}
 ?>

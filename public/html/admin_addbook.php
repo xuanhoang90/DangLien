@@ -50,9 +50,12 @@
 			<!--Thong ke va cac bieu tuong truy cap nhanh vao chuc nang-->
 			<p class="title">Thêm sách</p>
 			<div class="app-icon">
-				<div class="form-add-book"><form method="POST" action="">
+				<div class="form-add-book"><form method="POST" action="<?php echo ROOT_DOMAIN."/?site=admin&view=book&action=addbook_process";?>" enctype="multipart/form-data">
 					<div class="form-wrap">
 						<p class="label">Ten sach</p><input class="input-text book_name" name="book_name" type="text" value="" placeholder="Book name" />
+					</div>
+					<div class="form-wrap">
+						<p class="label">Hinh dai dien</p><input class="input-text" type="file" name="fileToUpload" id="fileToUpload">
 					</div>
 					<div class="form-wrap">
 						<p class="label">Ma so</p><input class="input-text book_code" name="book_code" type="text" value="" placeholder="Ma so" />

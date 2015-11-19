@@ -14,7 +14,7 @@ $(function(){
 		//neu tat ca cac gia tri nhap dung -> cho phep submit
 		
 		//dat 1 gia tri lam co` de kiem tra lan luot cac gia tri, sai cho nao thi dung lai cho do
-		var _GlobFlag = false;
+		var _GlobFlag = false;var _GlobFlag = false;
 		
 		var _Form = $(".form-add-book");
 		//lay gia tri ten sach
@@ -80,7 +80,7 @@ $(function(){
 		//lay gia tri Ma ISSN
 		var _StepCheck = $(".form-add-book").find(".book_issn").val();
 		//kiem tra Ma ISSN
-		if(_StepCheck != ""){//dung, da nhap Ma ISSN
+		if(isInt(_StepCheck) && _StepCheck.length == 4){//dung, da nhap Ma ISSN
 			_GlobFlag = true;
 			$(".form-add-book").find(".book_issn").css({"border":"1px solid #d4d4d4"});
 		}else{
@@ -95,7 +95,7 @@ $(function(){
 		//lay gia tri Ma DDC
 		var _StepCheck = $(".form-add-book").find(".book_ddc").val();
 		//kiem tra Ma DDC
-		if(_StepCheck != ""){//dung, da nhap Ma DDC
+		if(isInt(_StepCheck) && _StepCheck.length == 4){//dung, da nhap Ma DDC
 			_GlobFlag = true;
 			$(".form-add-book").find(".book_ddc").css({"border":"1px solid #d4d4d4"});
 		}else{
@@ -110,7 +110,7 @@ $(function(){
 		//lay gia tri Nam xuat ban
 		var _StepCheck = $(".form-add-book").find(".book_namxb").val();
 		//kiem tra Nam xuat ban
-		if(_StepCheck != ""){//dung, da nhap Nam xuat ban
+		if(isInt(_StepCheck) && _StepCheck.length == 4){//dung, da nhap Nam xuat ban
 			_GlobFlag = true;
 			$(".form-add-book").find(".book_namxb").css({"border":"1px solid #d4d4d4"});
 		}else{
@@ -140,7 +140,7 @@ $(function(){
 		//lay gia tri So trang
 		var _StepCheck = $(".form-add-book").find(".book_sotrang").val();
 		//kiem tra So trang
-		if(_StepCheck != ""){//dung, da nhap So trang
+		if(isInt(_StepCheck) && _StepCheck.length >= 1){//dung, da nhap So trang
 			_GlobFlag = true;
 			$(".form-add-book").find(".book_sotrang").css({"border":"1px solid #d4d4d4"});
 		}else{
@@ -170,7 +170,7 @@ $(function(){
 		//lay gia tri So luong
 		var _StepCheck = $(".form-add-book").find(".book_soluong").val();
 		//kiem tra So luong
-		if(_StepCheck != ""){//dung, da nhap So luong
+		if(isInt(_StepCheck) && _StepCheck.length >= 1){//dung, da nhap So luong
 			_GlobFlag = true;
 			$(".form-add-book").find(".book_soluong").css({"border":"1px solid #d4d4d4"});
 		}else{
@@ -185,7 +185,7 @@ $(function(){
 		//lay gia tri Gia
 		var _StepCheck = $(".form-add-book").find(".book_price").val();
 		//kiem tra Gia
-		if(_StepCheck != ""){//dung, da nhap Gia
+		if(isInt(_StepCheck) && _StepCheck.length >= 1){//dung, da nhap Gia
 			_GlobFlag = true;
 			$(".form-add-book").find(".book_price").css({"border":"1px solid #d4d4d4"});
 		}else{
