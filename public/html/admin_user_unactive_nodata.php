@@ -15,7 +15,7 @@
 					$stt = $GLOB->TableStart;
 				
 				?>
-					<div class="bangsach table_book">
+					<div class="bangsach">
 						<div class="mainrow">
 							<p class="table_stt" style="width: 5%;">STT</p>
 							<p class="table_tensach" style="width: 20%;">Ten sach</p>
@@ -71,10 +71,10 @@
 				<script>
 					$(function(){
 						//xoa sach
-						$(".table_book").find(".row").find('.table_thaotac').find(".xoa").click(function(e){
+						$(".bangsach").find(".row").find('.table_thaotac').find(".xoa").click(function(e){
 							e.preventDefault();
 							if(confirm("Ban co chac muon xoa sach khong?")){
-								$(".table_book").find(".row").removeClass("delete_this");
+								$(".bangsach").find(".row").removeClass("delete_this");
 								$(this).parent().parent().addClass("delete_this");
 								var _ActionLink = $(this).attr("href");
 								$.ajax({
@@ -84,7 +84,7 @@
 								}).done(function(data){
 									data = JSON.parse(data);
 									if(data.status == 'success'){
-										$(".table_book").find(".delete_this").fadeOut(300).remove();
+										$(".bangsach").find(".delete_this").fadeOut(300).remove();
 									}else{
 										alert("Da xay ra loi, vui long thu lai");
 									}

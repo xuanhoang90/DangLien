@@ -220,7 +220,9 @@ body,html{
 	font-size: 13px;
 	color: #333;
 }
-.gioithieusach .init  .booklist .book-item .contain-image .thuesach{
+.gioithieusach .init  .booklist .book-item .contain-image .thuesach,
+.gioithieusach .init  .booklist .book-item .contain-image .huymuon,
+.gioithieusach .init  .booklist .book-item .contain-image .damuon{
 	position: absolute;
 	top: 40%;
 	background: rgba(255,255,255,.8);
@@ -239,6 +241,10 @@ body,html{
 }
 .gioithieusach .init  .booklist .book-item:hover .contain-image .thuesach{display: block;}
 .gioithieusach .init  .booklist .book-item .contain-image .thuesach:hover{color: darkred; background: white;}
+.gioithieusach .init  .booklist .book-item:hover .contain-image .huymuon{display: block;}
+.gioithieusach .init  .booklist .book-item .contain-image .huymuon:hover{color: darkred; background: white;}
+.gioithieusach .init  .booklist .book-item:hover .contain-image .damuon{display: block;}
+.gioithieusach .init  .booklist .book-item .contain-image .damuon:hover{color: darkred; background: white;}
 /*************************Admin login****************************/
 .trangdangnhap{
 	width: 100%;
@@ -312,7 +318,8 @@ body,html{
 	text-align: right;
 	padding-right: 5px;
 }
-.trangdangnhap .init .login-area .form-wrap input{
+.trangdangnhap .init .login-area .form-wrap input,
+.trangdangnhap .init .login-area .form-wrap select{
 	display: inline-block;
 	margin: 0;
 	width: 60%;

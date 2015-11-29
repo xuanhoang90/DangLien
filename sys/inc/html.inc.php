@@ -275,5 +275,80 @@ HERE;
 			include "public/html/footer.php";
 			return true;
 		}
+		
+		//List user chua kich hoat
+		public function AdminListMemberUnactive(){
+			global $GLOB, $USER;
+			//lay thong tin danh sach user chua kich hoat, truong hop nay thi cung phai phan trang, vi doi khi nhieu qua, load se lau, vi du 2 - 3 trieu user chua kich hoat
+			$GLOB->vars['page_title'] = "DangLienLib";
+			include "public/html/header.php";
+			$memberList = $USER->MemberUnactiveList();
+			include "public/html/admin_user_unactive.php";
+			include "public/html/footer.php";
+			return true;
+		}
+		
+		//List user
+		public function AdminListMember(){
+			global $GLOB, $USER;
+			$GLOB->vars['page_title'] = "DangLienLib";
+			include "public/html/header.php";
+			$memberList = $USER->MemberList();
+			include "public/html/admin_user_normal.php";
+			include "public/html/footer.php";
+			return true;
+		}
+		
+		//Add manager
+		public function AdminAddManager(){
+			global $GLOB, $USER;
+			$GLOB->vars['page_title'] = "DangLienLib";
+			include "public/html/header.php";
+			include "public/html/admin_addsmod.php";
+			include "public/html/footer.php";
+			return true;
+		}
+		
+		//Hacker
+		public function HackerGetOut(){
+			global $GLOB, $USER;
+			$GLOB->vars['page_title'] = "DangLienLib";
+			include "public/html/header.php";
+			include "public/html/admin_hacker_getout.php";
+			include "public/html/footer.php";
+			return true;
+		}
+		
+		//Hacker
+		public function AddMangerProcessStatus($status = ""){
+			global $GLOB, $USER;
+			$GLOB->vars['page_title'] = "DangLienLib";
+			include "public/html/header.php";
+			include "public/html/admin_addmanager_status.php";
+			include "public/html/footer.php";
+			return true;
+		}
+		
+		//List manager
+		public function AdminListManger(){
+			global $GLOB, $USER;
+			$GLOB->vars['page_title'] = "DangLienLib";
+			include "public/html/header.php";
+			$memberList = $USER->MangerList();
+			include "public/html/admin_user_manager.php";
+			include "public/html/footer.php";
+			return true;
+		}
+		
+		//danh sach ban doc muon sach
+		public function AdminListBookBorrow(){
+			global $GLOB, $BOOK;
+			$GLOB->vars['page_title'] = "DangLienLib";
+			include "public/html/header.php";
+			$borrowList = $BOOK->BorrowList();
+			include "public/html/admin_book_borrow_list.php";
+			include "public/html/footer.php";
+			return true;
+		}
 	}
 ?>

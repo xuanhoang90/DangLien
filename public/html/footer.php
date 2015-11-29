@@ -1,3 +1,11 @@
+			<!--Footer-->
+			<div class="footer">
+				<div class="init">
+					<p>Dang Lien Book store</p>
+					<p>Copyright @ 2015</p>
+				</div>
+			</div>
+			<!--End footer-->
 		</div>
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="public/js/jquery-2.1.4.min.js"></script>

@@ -309,5 +309,222 @@
 			}
 			return $res;
 		}
+		/**
+		 *	Kiem tra coi cuon sach nay da duoc admin duyet cho thue chua
+		 */
+		public function CheckAcpt($member_id = false, $book_id = false){
+			global $DB;
+			if($member_id && $book_id){
+				if($data = $DB->query("SELECT * FROM borrow WHERE book_id='{$book_id}' AND member_id='{$member_id}'")){
+					if($data[0]['acpt']){
+						return true;
+					}else{
+						return false;
+					}
+				}else{
+					return false;
+				}
+			}else{
+				return false;
+			}
+		}
+		/**
+		 *	Kiem tra coi user da dat muon cuon sach nay chua
+		 */
+		public function CheckBorrow($member_id = false, $book_id = false){
+			global $DB;
+			if($member_id && $book_id){
+				if($DB->query("SELECT * FROM borrow WHERE book_id='{$book_id}' AND member_id='{$member_id}'")){
+					return false;
+				}else{
+					return true;
+				}
+			}else{
+				return true;
+			}
+		}
+		/**
+		 *	Xu ly muon sach
+		 */
+		public function BorrowBook(){
+			global $DB;
+			//khi muon sach thi luu thong tin user va thong tin sach ma user nay muon vao cho` duyet.
+			$user_id = $_SESSION['member_id'];
+			if(isset($_REQUEST['book_id'])){
+				//insert
+				if($this->CheckBorrow($user_id, $_REQUEST['book_id'])){
+					if($DB->query_insert("INSERT INTO borrow(book_id, member_id) VALUES ('{$_REQUEST['book_id']}', '{$user_id}')")){
+						return true;
+					}else{
+						return false;
+					}
+				}else{
+					return true;
+				}
+			}else{
+				//spam
+				return false;
+			}
+			return true;
+		}
+		/**
+		 *	Xu ly huy muon sach
+		 */
+		public function BorrowBookReject(){
+			global $DB;
+			//khi muon sach thi luu thong tin user va thong tin sach ma user nay muon vao cho` duyet.
+			$user_id = $_SESSION['member_id'];
+			if(isset($_REQUEST['book_id'])){
+				//insert
+				if(!$this->CheckBorrow($user_id, $_REQUEST['book_id'])){
+					if($DB->query_insert("DELETE FROM borrow WHERE book_id='{$_REQUEST['book_id']}' AND member_id='{$user_id}'")){
+						return true;
+					}else{
+						return false;
+					}
+				}else{
+					return false;
+				}
+			}else{
+				//spam
+				return false;
+			}
+			return true;
+		}
+		//kiem tra so luong toi da cua user 
+		public function UserMaxValue(){
+			global $DB;
+			//neu la sinh vien -> max = 3
+			//neu la giang vien -> max = unlimited
+			if($_SESSION['member_svgv'] == 'sinhvien'){
+				//kiem tra sach da muon
+				if($data = $DB->query("SELECT sum(status) FROM borrow WHERE member_id='{$_SESSION['member_id']}' ")){
+					//echo $data[0]['sum(status)'];
+					if($data[0]['sum(status)'] < 3){
+						return false;
+					}else{
+						return true;
+					}
+				}else{
+					return false;
+				}
+			}elseif($_SESSION['member_svgv'] == 'giangvien'){
+				return false;
+			}else{
+				//admin, smod, khong dc thue
+				return true;
+			}
+		}
+		
+		/**
+		 *	Load danh sach ban doc muon sach
+		 */
+		public function BorrowList(){
+			global $DB, $GLOB, $BOOK;
+			//lay thong tin so trang
+			if(isset($_REQUEST['page_number'])){
+				$page_num = intval($_REQUEST['page_number']);
+			}else{
+				$page_num = 1;
+			}
+			$bookperPage = 10;
+			//glb
+			$GLOB->obj_page_num = $page_num;
+			//get max record
+			if($data = $DB->query("SELECT sum(status) FROM borrow")){
+				$total = $data[0]['sum(status)'];
+			}else{
+				$total = 1;
+			}
+			$totalPage = ceil($total/$bookperPage);
+			$GLOB->obj_page_total = $totalPage;
+			$res = array();
+			//Gioi han phan trang
+			$start = ($page_num-1)*$bookperPage;
+			$GLOB->TableStart = $start+1;
+			$sql_add = " ORDER BY id DESC LIMIT {$start}, {$bookperPage} ";
+			//get data
+			if($data = $DB->query("SELECT * FROM borrow WHERE acpt='0' {$sql_add} ")){
+				$res = $data;
+			}else{
+				$res = false;
+			}
+			return $res;
+		}
+		/**
+		 *	Lay ten sach
+		 */
+		public function GetBookName($id = false){
+			global $DB;
+			if($id){
+				if($data = $DB->query("SELECT * FROM book WHERE id='{$id}' ")){
+					return $data[0]['name'];
+				}else{
+					return false;
+				}
+			}else{
+				return false;
+			}
+		}
+		/**
+		 *	Lay so luong sach
+		 */
+		public function GetBookNumber($id = false){
+			global $DB;
+			if($id){
+				if($data = $DB->query("SELECT * FROM book WHERE id='{$id}' ")){
+					return $data[0]['number'];
+				}else{
+					return false;
+				}
+			}else{
+				return false;
+			}
+		}
+		/**
+		 *	Lay so luong sach da cho thue
+		 */
+		public function GetBookBorrowedNumber($id = false){
+			global $DB;
+			if($id){
+				if($data = $DB->query("SELECT sum(status) FROM borrow WHERE book_id='{$id}' AND acpt='1' ")){
+					return $data[0]['sum(status)'];
+				}else{
+					return false;
+				}
+			}else{
+				return false;
+			}
+		}
+		/**
+		 *	Xu ly cho muon sach
+		 */
+		public function ApplyBorrowProcess(){
+			global $DB;
+			if(isset($_REQUEST['borrow_id'])){
+				if($DB->query_insert("UPDATE borrow SET acpt='1' WHERE id ='{$_REQUEST['borrow_id']}' ")){
+					return true;
+				}else{
+					return false;
+				}
+			}else{
+				return false;
+			}
+		}
+		/**
+		 *	Xoa record muon sach
+		 */
+		public function DeleteBorrowProcess(){
+			global $DB;
+			if(isset($_REQUEST['borrow_id'])){
+				if($DB->query_insert("DELETE FROM borrow WHERE id ='{$_REQUEST['borrow_id']}' ")){
+					return true;
+				}else{
+					return false;
+				}
+			}else{
+				return false;
+			}
+		}
 	}
 ?>

@@ -20,6 +20,13 @@
 					<label>Repeat Password: </label>
 					<input type="password" class="user_pass_repeat" name="user_pass_repeat" value="" placeholder="Password repeat" />
 				</div>
+				<div class="form-wrap">
+					<label>Ban la: </label>
+					<select class="user_svgv" name="user_svgv">
+						<option value="sinhvien">Sinh vien</option>
+						<option value="giangvien">Giang vien</option>
+					</select>
+				</div>
 				<input class="submit-login" type="submit" name="submit" value="Let's go" />
 			</form>
 		</div>

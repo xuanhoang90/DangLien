@@ -1,46 +1,3 @@
-<!--Main menu-->
-<div class="menu-chinh">
-	<div class="init">
-		<div class="logo">
-			<a href="<?php echo ROOT_DOMAIN;?>" class="logo-contain"><img src="/public/imgs/logo.png" /></a>
-		</div>
-		<div class="menu-left">
-			<a class="menu-item active" href="<?php echo ROOT_DOMAIN;?>"><i class="fa fa-home"></i> Home</a>
-			<a class="menu-item" href="<?php echo ROOT_DOMAIN;?>">Book Category</a>
-			<a class="menu-item" href="<?php echo ROOT_DOMAIN;?>">About</a>
-			<a class="menu-item" href="<?php echo ROOT_DOMAIN;?>">Contact</a>
-		</div>
-		<div class="menu-right">
-			<div class="search-form">
-				<form action="<?php echo ROOT_DOMAIN;?>" method="GET">
-					<input class="search-input" type="text" name="s_key" value="" placeholder="Type some thing to search..." /><i class="fa fa-search"></i>
-					<input type="submit" name="submit" style="display: none;" value="OK" />
-				</form>
-			</div>
-			<div class="user-area">
-				<?php 
-					if(isset($_SESSION['logined'])):
-				?>
-					<a class="title">Hello, <?php echo $_SESSION['member']; ?> <i class="fa fa-chevron-down"></i></a>
-					<div class="user-menu">
-						<a class="item" href="<?php echo ROOT_DOMAIN;?>">Tai khoan</a>
-						<a class="item" href="<?php echo ROOT_DOMAIN;?>?site=user&action=logout">Thoat</a>
-					</div>
-				<?php else: ?>
-					<a class="title">Thanh vien <i class="fa fa-chevron-down"></i></a>
-					<div class="user-menu">
-						<a class="item" href="<?php echo ROOT_DOMAIN;?>?site=user&action=login&next=home">Dang nhap</a>
-						<a class="item" href="<?php echo ROOT_DOMAIN;?>?site=user&action=register">Dang ky</a>
-						<hr/>
-						<a class="item" href="<?php echo ROOT_DOMAIN;?>/?site=user&action=login&next=dashboard">Admin login</a>
-						<a class="item" href="<?php echo ROOT_DOMAIN;?>/?site=user&action=login&next=dashboard">Smod login</a>
-					</div>
-				<?php endif; ?>
-			</div>
-		</div>
-	</div>
-</div>
-<!--End Main menu-->
 <!--X Slider-->
 <div class="x-slider">
 	<div class="slider">
@@ -87,7 +44,25 @@
 				<div class="book-item">
 					<div class="contain-image">
 						<img src="<?php echo ROOT_DOMAIN.$oneBook['image']; ?>" />
-						<a class="thuesach"><i class="fa fa-eyedropper"></i> Thue sach</a>
+						<?php if(isset($_SESSION['logined'])): 
+							//check xem cuon sach nay user da muon chua
+							if(!$book12->CheckBorrow($_SESSION['member_id'], $oneBook['id'])){
+								if($book12->CheckAcpt($_SESSION['member_id'], $oneBook['id'])){
+									echo '<a class="damuon" href="#"><i class="fa fa-check"></i> Da muon</a>';
+								}else{
+									echo "<a class='huymuon' href='". ROOT_DOMAIN."/?site=book&action=borrow_book_reject&book_id=".$oneBook['id']."'><i class='fa fa-mail-reply'></i> Huy muon</a>";
+								}
+							}else{
+								echo "<a class='thuesach' href='". ROOT_DOMAIN."/?site=book&action=borrow_book&book_id=".$oneBook['id']."'><i class='fa fa-eyedropper'></i> Muon sach</a>";
+							}
+						?>
+						<?php else: ?>
+							<a class="thuesach" href="<?php echo ROOT_DOMAIN."/?site=book&action=borrow_book&book_id=".$oneBook['id'];?>"><i class="fa fa-eyedropper"></i> Muon sach</a>
+						<?php endif; ?>
+						<!--
+						<a class="huymuon" href="<?php echo ROOT_DOMAIN."/?site=book&action=borrow_book_reject&book_id=".$oneBook['id'];?>"><i class="fa fa-mail-reply"></i> Huy muon</a>
+						<a class="damuon" href="#"><i class="fa fa-check"></i> Da muon</a>
+						-->
 					</div>
 					<a class="booklink" href="#"><?php echo $oneBook['name']; ?></a>
 					<p><?php echo $oneBook['description']; ?></p>
@@ -101,12 +76,57 @@
 		</div>
 	</div>
 </div>
-
-<!--Footer-->
-<div class="footer">
-	<div class="init">
-		<p>Dang Lien Book store</p>
-		<p>Copyright @ 2015</p>
-	</div>
-</div>
-<!--End footer-->
+<script>
+	$(function(){
+		$(document).on("click", ".book-item .thuesach", function(e){
+			e.preventDefault();
+			$(".book-item").removeClass("borrow-it");
+			$(this).parent().parent().addClass("borrow-it");
+			var _BorrowLink = $(this).attr("href");
+			if(confirm("Ban se thue cuon sach nay?")){
+				//ajax request
+				$.ajax({
+					method: "POST",
+					url: _BorrowLink,
+					data: {abc:"1"},
+				}).done(function(data){
+					data = JSON.parse(data);
+					if(data.status == 'success'){
+						alert(data.stt);
+						$(".borrow-it").find(".thuesach").remove();
+						$(".borrow-it").find(".contain-image").append('<a class="huymuon" href="<?php echo ROOT_DOMAIN."/?site=book&action=borrow_book_reject&book_id=".$oneBook['id'];?>"><i class="fa fa-mail-reply"></i> Huy muon</a>');
+					}else{
+						alert(data.stt);
+					}
+				});
+			}else{
+				//do nothing
+			}
+		})
+		$(document).on("click", ".book-item .huymuon", function(e){
+			e.preventDefault();
+			$(".book-item").removeClass("borrow-it");
+			$(this).parent().parent().addClass("borrow-it");
+			var _BorrowLink = $(this).attr("href");
+			if(confirm("Ban se khong muon cuon sach nay nua?")){
+				//ajax request
+				$.ajax({
+					method: "POST",
+					url: _BorrowLink,
+					data: {abc:"1"},
+				}).done(function(data){
+					data = JSON.parse(data);
+					if(data.status == 'success'){
+						alert(data.stt);
+						$(".borrow-it").find(".huymuon").remove();
+						$(".borrow-it").find(".contain-image").append('<a class="thuesach" href="<?php echo ROOT_DOMAIN."/?site=book&action=borrow_book&book_id=".$oneBook['id'];?>"><i class="fa fa-eyedropper"></i> Muon sach</a>');
+					}else{
+						alert(data.stt);
+					}
+				});
+			}else{
+				//do nothing
+			}
+		})
+	})
+</script>
