@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2015 at 04:26 PM
+-- Generation Time: Nov 29, 2015 at 06:53 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -110,11 +110,20 @@ CREATE TABLE IF NOT EXISTS `borrow` (
   `id` double NOT NULL AUTO_INCREMENT,
   `book_id` double NOT NULL,
   `member_id` double NOT NULL,
-  `mod_id` double NOT NULL,
+  `mod_id` double NOT NULL DEFAULT '0',
   `date_start` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `date_end` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `status` tinyint(4) NOT NULL DEFAULT '1',
+  `acpt` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=26 ;
+
+--
+-- Dumping data for table `borrow`
+--
+
+INSERT INTO `borrow` (`id`, `book_id`, `member_id`, `mod_id`, `date_start`, `date_end`, `status`, `acpt`) VALUES
+(25, 15, 6, 0, '2015-11-29 17:47:10', '0000-00-00 00:00:00', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -127,19 +136,24 @@ CREATE TABLE IF NOT EXISTS `member` (
   `account` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `acc_type` tinyint(1) NOT NULL COMMENT '1: master admin, 2: mod, 3: user',
+  `svgv` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'sinhvien',
   `status` int(11) NOT NULL DEFAULT '1',
+  `active_status` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `member`
 --
 
-INSERT INTO `member` (`id`, `account`, `password`, `acc_type`, `status`) VALUES
-(1, 'admin', '827ccb0eea8a706c4c34a16891f84e7b', 1, 1),
-(2, 'smod', '827ccb0eea8a706c4c34a16891f84e7b', 2, 1),
-(3, 'member', '827ccb0eea8a706c4c34a16891f84e7b', 3, 1),
-(5, 'xuanhoang', 'e10adc3949ba59abbe56e057f20f883e', 3, 1);
+INSERT INTO `member` (`id`, `account`, `password`, `acc_type`, `svgv`, `status`, `active_status`) VALUES
+(1, 'admin', '827ccb0eea8a706c4c34a16891f84e7b', 1, 'sinhvien', 1, 1),
+(3, 'member', '827ccb0eea8a706c4c34a16891f84e7b', 3, 'sinhvien', 1, 1),
+(5, 'xuanhoang', 'e10adc3949ba59abbe56e057f20f883e', 3, 'sinhvien', 1, 0),
+(6, 'danglien', 'e10adc3949ba59abbe56e057f20f883e', 3, 'sinhvien', 1, 1),
+(7, 'vanlinh', 'e10adc3949ba59abbe56e057f20f883e', 3, 'giangvien', 1, 0),
+(9, 'smodlevel2', 'e10adc3949ba59abbe56e057f20f883e', 2, 'no', 1, 1),
+(10, 'danglien1', '789a888756c3ec678b9b97934a0b4a83', 2, 'no', 1, 1);
 
 -- --------------------------------------------------------
 
