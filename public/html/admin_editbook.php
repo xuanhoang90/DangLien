@@ -12,6 +12,11 @@
 					<div class="form-wrap">
 						<p class="label">Ten sach</p><input class="input-text book_name" name="book_name" type="text" value="<?php echo $data['name']; ?>" placeholder="Book name" />
 					</div>
+					<?php if($data['image'] != ''): ?>
+					<div class="form-wrap">
+						<p class="label">&nbsp;</p><img class="input-text image_preview" src="<?php echo ROOT_DOMAIN."/".$data['image']; ?>" />
+					</div>
+					<?php endif; ?>
 					<div class="form-wrap">
 						<p class="label">Hinh dai dien</p><input class="input-text" type="file" name="fileToUpload" id="fileToUpload">
 					</div>

@@ -1,8 +1,5 @@
 <div class="trangdangnhap">
 	<div class="init">
-		<div class="logo">
-			<a href="<?php echo ROOT_DOMAIN;?>" class="logo-contain"><img src="/public/imgs/logo.png" /></a>
-		</div>
 		<div class="login-area">
 			<form action="<?php echo ROOT_DOMAIN;?>" method="POST">
 				<h1>Sign up</h1>

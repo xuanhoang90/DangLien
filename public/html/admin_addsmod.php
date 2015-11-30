@@ -14,7 +14,7 @@
 						<p class="label">Mat khau</p><input type="password" class="input-text user_pass" name="user_pass" value="" placeholder="Password" />
 					</div>
 					<div class="form-wrap">
-						<p class="label">Nhap lai mat khai</p><input type="password" class="input-text user_pass_repeat" name="user_pass_repeat" value="" placeholder="Password repeat" />
+						<p class="label">Nhap lai mat khau</p><input type="password" class="input-text user_pass_repeat" name="user_pass_repeat" value="" placeholder="Password repeat" />
 					</div>
 					<input class="form-submit submit-login" type="submit" name="submit" value="Go" />
 				</form></div> 

@@ -26,6 +26,15 @@
 			include "public/html/footer.php";
 			return true;
 		}
+		//Search
+		public function Search(){
+			global $GLOB, $BOOK;
+			$GLOB->vars['page_title'] = "DangLienLib";
+			include "public/html/header.php";
+			include "public/html/search.php";
+			include "public/html/footer.php";
+			return true;
+		}
 		//Admin login
 		public function Login(){
 			global $GLOB;
@@ -347,6 +356,38 @@ HERE;
 			include "public/html/header.php";
 			$borrowList = $BOOK->BorrowList();
 			include "public/html/admin_book_borrow_list.php";
+			include "public/html/footer.php";
+			return true;
+		}
+		
+		//trang thong tin user
+		public function UserInformation($status = ''){
+			global $GLOB, $USER;
+			$GLOB->vars['page_title'] = "DangLienLib";
+			include "public/html/header.php";
+			$userInfo = $USER->GetUserData();
+			include "public/html/user_info.php";
+			include "public/html/footer.php";
+			return true;
+		}
+		
+		//trang thay doi mat khau
+		public function UserChangePassword($status = ''){
+			global $GLOB, $USER;
+			$GLOB->vars['page_title'] = "DangLienLib";
+			include "public/html/header.php";
+			include "public/html/user_changepassword.php";
+			include "public/html/footer.php";
+			return true;
+		}
+		
+		//trang danh sach sach muon
+		public function UserBorrowList(){
+			global $GLOB, $USER;
+			$GLOB->vars['page_title'] = "DangLienLib";
+			include "public/html/header.php";
+			$userBorrowList = $USER->GetUserBorrowList();
+			include "public/html/user_borrowlist.php";
 			include "public/html/footer.php";
 			return true;
 		}

@@ -42,8 +42,16 @@
 			return;
 		}
 		public function HomePage(){
-			$out = new HtmlOutput();
-			$out->Home();exit;
+			switch($_REQUEST['action']){
+				case 'search':
+					$out = new HtmlOutput();
+					$out->Search();exit;
+					break;
+				default:
+					$out = new HtmlOutput();
+					$out->Home();exit;
+					break;
+			}
 			return;
 		}
 		public function Admin(){
@@ -129,6 +137,61 @@
 				case 'login':
 					if(isset($_SESSION['logined'])){
 						$this->HomePage();
+					}else{
+						$out = new HtmlOutput();
+						$out->Login();exit;
+					}
+					break;
+				case 'borrowlist':
+					if(isset($_SESSION['logined'])){
+						$out = new HtmlOutput();
+						$out->UserBorrowList();exit;
+					}else{
+						$out = new HtmlOutput();
+						$out->Login();exit;
+					}
+					break;
+				case 'info':
+					if(isset($_SESSION['logined'])){
+						$out = new HtmlOutput();
+						$out->UserInformation();exit;
+					}else{
+						$out = new HtmlOutput();
+						$out->Login();exit;
+					}
+					break;
+				case 'change_password':
+					if(isset($_SESSION['logined'])){
+						$out = new HtmlOutput();
+						$out->UserChangePassword();exit;
+					}else{
+						$out = new HtmlOutput();
+						$out->Login();exit;
+					}
+					break;
+				case 'change_password_process':
+					if(isset($_SESSION['logined'])){
+						if($USER->UserChangePasswordProcess()){
+							$out = new HtmlOutput();
+							$out->UserChangePassword('<i class="fa fa-check"></i> Doi mat khau thanh cong');exit;
+						}else{
+							$out = new HtmlOutput();
+							$out->UserChangePassword('<i class="fa fa-exclamation-circle"></i> Doi mat khau that bai');exit;
+						}
+					}else{
+						$out = new HtmlOutput();
+						$out->Login();exit;
+					}
+					break;
+				case 'update_info':
+					if(isset($_SESSION['logined'])){
+						if($USER->InformationUpdate()){
+							$out = new HtmlOutput();
+							$out->UserInformation('<i class="fa fa-check"></i> Cap nhat thong tin thanh cong');exit;
+						}else{
+							$out = new HtmlOutput();
+							$out->UserInformation('<i class="fa fa-exclamation-circle"></i> Cap nhat thong tin that bai, vui long thu lai');exit;
+						}
 					}else{
 						$out = new HtmlOutput();
 						$out->Login();exit;

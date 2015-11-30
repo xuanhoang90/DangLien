@@ -306,5 +306,122 @@
 				return false;
 			}
 		}
+		
+		/**
+		 *	Lay thong tin user
+		 */
+		public function GetUserData(){
+			global $DB;
+			if($data = $DB->query("SELECT * FROM member_description WHERE member_id='{$_SESSION['member_id']}' ")){
+				return $data[0];
+			}else{
+				$DB->query_insert("INSERT INTO member_description(member_id) VALUES ('{$_SESSION['member_id']}')");
+				return false;
+			}
+		}
+		
+		//save edit data
+		//khi edit minh co them 2 gia tri an la id va old_image
+		//lay 2 gia tri do
+		public function InformationUpdate(){
+			global $DB;
+			//save hinh anh
+			$user_avatar_old = $_REQUEST['user_avatar_old'];
+			//kiem tra coi co up hinh moi ko, neu ko co thi lay hinh cu
+			if($_FILES["fileToUpload"]["name"]){
+				$target_dir = "uploads/images/";
+				$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+				$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+				if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+					$image = "/".$target_file;
+				}else{
+					//upload loi~ thi lay hinh cu
+					$image = $user_avatar_old;
+				}
+			}else{
+				//ko co upload hinh moi , lay hinh cu
+				$image = $user_avatar_old;
+			}
+			//get data
+			$user_hoten = $_REQUEST['user_hoten'];
+			$user_ngaysinh = $_REQUEST['user_ngaysinh'];
+			$user_email = $_REQUEST['user_email'];
+			$user_lop = $_REQUEST['user_lop'];
+			$user_truong = $_REQUEST['user_truong'];
+			//save
+			$member_id = $_SESSION['member_id'];
+			//o day ko insert ma la update
+			if($DB->query_insert("UPDATE member_description SET `name`='{$user_hoten}', `daybirth`='{$user_ngaysinh}', `email`='{$user_email}', `class`='{$user_lop}', `school`='{$user_truong}', `avatar`='{$image}' WHERE member_id='{$member_id}'")){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		//doi mat khau
+		public function UserChangePasswordProcess(){
+			global $DB;
+			$pwd = md5($_REQUEST['user_pass_old']);
+			$pwd_new = md5($_REQUEST['user_pass_new']);
+			//check old password
+			if($this->PasswordCheck($pwd)){
+				//ok, update new password
+				if($DB->query_insert("UPDATE member SET `password`='{$pwd_new}' WHERE id='{$_SESSION['member_id']}' ")){
+					return true;
+				}else{
+					return false;
+				}
+				return true;
+			}else{
+				//old password false, return false 
+				return false;
+			}
+		}
+		public function PasswordCheck($pwd){
+			global $DB;
+			if($data = $DB->query("SELECT * FROM member WHERE id='{$_SESSION['member_id']}' ")){
+				if($data[0]['password'] == $pwd){
+					return true;
+				}else{
+					return false;
+				}
+			}else{
+				return false;
+			}
+		}
+		/**
+		 *	Load danh sach ban doc muon sach
+		 */
+		public function GetUserBorrowList(){
+			global $DB, $GLOB, $BOOK;
+			//lay thong tin so trang
+			if(isset($_REQUEST['page_number'])){
+				$page_num = intval($_REQUEST['page_number']);
+			}else{
+				$page_num = 1;
+			}
+			$bookperPage = 10;
+			//glb
+			$GLOB->obj_page_num = $page_num;
+			//get max record
+			if($data = $DB->query("SELECT sum(status) FROM borrow")){
+				$total = $data[0]['sum(status)'];
+			}else{
+				$total = 1;
+			}
+			$totalPage = ceil($total/$bookperPage);
+			$GLOB->obj_page_total = $totalPage;
+			$res = array();
+			//Gioi han phan trang
+			$start = ($page_num-1)*$bookperPage;
+			$GLOB->TableStart = $start+1;
+			$sql_add = " ORDER BY id DESC LIMIT {$start}, {$bookperPage} ";
+			//get data
+			if($data = $DB->query("SELECT * FROM borrow WHERE member_id='{$_SESSION['member_id']}' {$sql_add} ")){
+				$res = $data;
+			}else{
+				$res = false;
+			}
+			return $res;
+		}
 	}
 ?>

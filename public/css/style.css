@@ -688,3 +688,53 @@ body,html{
 	color: brown;
 	cursor: pointer; /*Tao hieu ung khi re chuot vao 1 phan tu no hien hinh ban tay*/
 }
+
+.thongtinuser{
+	background: none;
+}
+.thongtinuser .init{
+	display: block;
+	margin: 5px auto;
+	width: 90%;
+	max-width: 1200px;
+}
+.thongtinuser .init .block-title{
+	display: block;
+	line-height: 50px;
+	margin: 20px auto;
+	text-align: center;
+	color: green;
+	font-weight: bold;
+	border-bottom: 1px dashed green;
+	padding: 10px auto;
+	width: 300px;
+}
+.image_preview{
+	display: block;
+	margin: 5 auto;
+	width: 200px !important;
+}
+.thongtinuser .init .link_changepassword{
+	text-decoration: none;
+	line-height: 30px;
+	font-weight: bold;
+	font-size: 15px;
+	margin-left: 50px;
+}
+.x_status{
+	line-height: 30px;
+	text-align: center;
+	font-weight: bold;
+}
+.user_borrow_list_title{
+	display: block;
+	line-height: 50px;
+	margin: 20px auto;
+	text-align: center;
+	color: green;
+	font-weight: bold;
+	border-bottom: 1px dashed green;
+	padding: 10px auto;
+	width: 300px;
+	font-size: 25px;
+}

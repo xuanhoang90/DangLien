@@ -47,7 +47,9 @@
 					</div>
 					<div class="menu-right">
 						<div class="search-form">
-							<form action="<?php echo ROOT_DOMAIN;?>" method="GET">
+							<form action="<?php echo ROOT_DOMAIN;?>?site=home&action=search" method="GET">
+								<input type="hidden" name="site" value="home" />
+								<input type="hidden" name="action" value="search" />
 								<input class="search-input" type="text" name="s_key" value="" placeholder="Type some thing to search..." /><i class="fa fa-search"></i>
 								<input type="submit" name="submit" style="display: none;" value="OK" />
 							</form>
@@ -58,7 +60,8 @@
 							?>
 								<a class="title">Hello, admin <i class="fa fa-chevron-down"></i></a>
 								<div class="user-menu">
-									<a class="item" href="<?php echo ROOT_DOMAIN;?>">Tai khoan</a>
+									<?php if($_SESSION['acc_type'] == '3' || $_SESSION['acc_type'] == '2'): ?><a class="item" href="<?php echo ROOT_DOMAIN;?>?site=user&action=info">Tai khoan</a><?php endif; ?>
+									<?php if($_SESSION['acc_type'] == '3'): ?><a class="item" href="<?php echo ROOT_DOMAIN;?>?site=user&action=borrowlist">Sach muon</a><?php endif; ?>
 									<a class="item" href="<?php echo ROOT_DOMAIN;?>?site=user&action=logout">Thoat</a>
 								</div>
 							<?php else: ?>

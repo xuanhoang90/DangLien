@@ -431,7 +431,7 @@
 			//glb
 			$GLOB->obj_page_num = $page_num;
 			//get max record
-			if($data = $DB->query("SELECT sum(status) FROM borrow")){
+			if($data = $DB->query("SELECT sum(status) FROM borrow WHERE acpt='0' ")){
 				$total = $data[0]['sum(status)'];
 			}else{
 				$total = 1;
@@ -525,6 +525,42 @@
 			}else{
 				return false;
 			}
+		}
+		/**
+		 *	Load thong tin tim kiem
+		 */
+		public function SearchBook(){
+			global $DB, $GLOB;
+			$skey = $_REQUEST['s_key'];
+			//lay thong tin so trang
+			if(isset($_REQUEST['page_number'])){
+				$page_num = intval($_REQUEST['page_number']);
+			}else{
+				$page_num = 1;
+			}
+			$bookperPage = 12;
+			//glb
+			$GLOB->obj_page_num = $page_num;
+			//get max record
+			if($data = $DB->query("SELECT sum(status) FROM book WHERE name LIKE '%{$skey}%' OR author LIKE '%{$skey}%' OR description LIKE '%{$skey}%' OR nhasanxuat LIKE '%{$skey}%' OR theloai LIKE '%{$skey}%' ")){
+				$total = $data[0]['sum(status)'];
+			}else{
+				$total = 1;
+			}
+			$totalPage = ceil($total/$bookperPage);
+			$GLOB->obj_page_total = $totalPage;
+			$res = array();
+			//Gioi han phan trang
+			$start = ($page_num-1)*$bookperPage;
+			$GLOB->TableStart = $start+1;
+			//get data
+			$sql_add = " ORDER BY id DESC LIMIT {$start}, {$bookperPage} ";
+			if($data = $DB->query("SELECT * FROM book WHERE name LIKE '%{$skey}%' OR author LIKE '%{$skey}%' OR description LIKE '%{$skey}%' OR nhasanxuat LIKE '%{$skey}%' OR theloai LIKE '%{$skey}%' {$sql_add} ")){
+				$res = $data;
+			}else{
+				$res = false;
+			}
+			return $res;
 		}
 	}
 ?>

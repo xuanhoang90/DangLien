@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2015 at 06:53 PM
+-- Generation Time: Nov 30, 2015 at 05:41 AM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -116,14 +116,16 @@ CREATE TABLE IF NOT EXISTS `borrow` (
   `status` tinyint(4) NOT NULL DEFAULT '1',
   `acpt` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=26 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=29 ;
 
 --
 -- Dumping data for table `borrow`
 --
 
 INSERT INTO `borrow` (`id`, `book_id`, `member_id`, `mod_id`, `date_start`, `date_end`, `status`, `acpt`) VALUES
-(25, 15, 6, 0, '2015-11-29 17:47:10', '0000-00-00 00:00:00', 1, 1);
+(26, 17, 6, 0, '2015-11-30 03:38:36', '0000-00-00 00:00:00', 1, 0),
+(27, 16, 6, 0, '2015-11-30 03:38:40', '0000-00-00 00:00:00', 1, 0),
+(28, 15, 6, 0, '2015-11-30 03:38:45', '0000-00-00 00:00:00', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -167,10 +169,18 @@ CREATE TABLE IF NOT EXISTS `member_description` (
   `name` text COLLATE utf8_unicode_ci NOT NULL,
   `class` text COLLATE utf8_unicode_ci NOT NULL,
   `school` text COLLATE utf8_unicode_ci NOT NULL,
-  `daybirth` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `daybirth` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'ngay/thang/nam',
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `avatar` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `member_description`
+--
+
+INSERT INTO `member_description` (`id`, `member_id`, `name`, `class`, `school`, `daybirth`, `email`, `avatar`) VALUES
+(1, 6, 'Nguyen Dang Lien ', '10', 'ABC', '2/10/1992', 'danglien@gmail.com', '/uploads/images/Aatrox.png');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
